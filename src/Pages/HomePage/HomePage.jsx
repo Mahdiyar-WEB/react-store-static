@@ -7,8 +7,7 @@ import {
 } from "../../Providers/StoreProvider/StoreProvider";
 import { useToasts } from "react-toast-notifications";
 import Footer from "../../Components/Footer/Footer";
-import loading from "../../assets/images/Loading.svg";
-import { createRef, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 const HomePage = () => {
   const { addToast } = useToasts();
