@@ -1,0 +1,40 @@
+.container{
+    background-color: #fff;
+    width: 100% ;
+    border: 1px solid rgba(0, 0, 0, .2);
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 15px 25px;
+}
+.buyBtn{
+    text-align: center;
+    width: 50%;
+    background-color:  rgba(155,6,199,1);
+    color: #fff;
+    padding: 10px 0px;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+.price{
+    font-size: 14px;
+    width: 30%;
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+}
+.subPrice{
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 12px;
+}
+@media screen and (max-width:1000px) {
+    .container{
+        display: flex;
+    }
+}

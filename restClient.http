@@ -1,0 +1,10 @@
+###
+GET  http://localhost:5000/api/product 
+content-type: application/json  
+
+{
+    "name":"majdiyar",
+    "email":"mahdiyar472@gmail.com",
+    "phoneNumber":"09152506383",
+    "password":"12345678"
+}

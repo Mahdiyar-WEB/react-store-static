@@ -1,0 +1,42 @@
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 0 0 0;
+}
+.profileContainer{
+    box-shadow: 0 0 15px 3px #ccc;
+    border-radius: 20px;
+    padding: 30px 20px;
+    background-color: #fff;
+    width: 90%;
+    max-width: 650px;
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.profileContainer button{
+    padding: 5px 30px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: #fff;
+    background-color: #dc2626;
+}
+.imageContainer{
+    padding: 10px;
+    border-radius: 50%;
+    display: flex;
+    border: 1px solid #ccc;
+    font-size: 50px;
+}
+.formDiv{
+    border-radius: 20px;
+    padding: 5px 20px;
+    border: 1px solid #ccc;
+    width: 100%;
+    display: flex;
+    justify-content: space-between !important;
+}

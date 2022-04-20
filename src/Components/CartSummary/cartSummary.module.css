@@ -1,0 +1,25 @@
+.container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+}
+.detailsContainer{
+    padding: 10px 30px;
+    direction: rtl;
+    display: flex;
+    justify-content: space-between;
+}
+.buyBtn{
+    text-align: center;
+    background-color:  rgba(155,6,199,1);
+    color: #fff;
+    margin-top: 20px;
+    padding: 3px 8px;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    width: 40%;
+    margin: 20px auto 0;
+}

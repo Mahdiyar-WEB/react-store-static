@@ -1,0 +1,42 @@
+.container{
+    border: 1px solid rgba(0, 0, 0, .2);
+    width: 80%;
+    margin: 20px auto;
+    background-color: #fff;
+    border-radius: 20px;
+}
+.form{
+    font-size: 13px;
+    padding: 10px 15px;
+    direction: rtl;
+}
+.btnContainer{
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+.btnContainer button{
+    cursor: pointer;
+    border: none;
+    display: inline-block;
+    width: 50%;
+    margin: 0px auto;
+    padding: 5px 0;
+    background-color: #6d28d9;
+    color: #fff;
+    border-radius: 3px;
+    outline: none;
+}
+.btnContainer button:disabled{
+    cursor: not-allowed;
+    background-color: #6c28d993;
+
+}
+@media screen and (min-width:780px) {
+    .container{
+        max-width: 630px;
+    }
+    .form{
+        font-size: 14px;
+    }
+}

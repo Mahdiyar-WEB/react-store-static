@@ -1,0 +1,60 @@
+.container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(0, 0, 0, .9);
+    padding: 25px 30px 10px 30px;
+    gap: 20px;
+}
+.linkContainer{
+    display: flex;
+    gap: 20px;
+}
+.linkContainer a{
+    color: rgba(255, 255, 255, .7);
+    font-size: 25px;
+    transition: all .3s ease;
+}
+.linkContainer a:nth-last-of-type(1):hover{
+    color: rgb(4, 107, 241);
+}
+.linkContainer a:nth-last-of-type(2):hover{
+    color: #fff;
+}
+.linkContainer a:nth-last-of-type(3):hover{
+    color: #ff2600;
+}
+.linkContainer a:nth-last-of-type(4):hover{
+    color: rgb(4, 174, 241);
+}
+.container h1{
+    background: -webkit-linear-gradient(-45deg, #fff400, #ff4400, #feff05);
+    background-size: 400% 400%;
+    animation: gradient 10s ease infinite;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+@-webkit-keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
