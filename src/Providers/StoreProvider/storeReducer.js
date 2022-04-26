@@ -53,7 +53,8 @@ const storeReducer = (state, action) => {
       return { ...state, totalPrice: total };
     }
     case "update":{
-      return {products:action.value.products,totalPrice:action.value.totalPrice}
+      const value = action.value || "";
+      return {products:value.products,totalPrice:value.totalPrice}
     }
     default:
       return state;

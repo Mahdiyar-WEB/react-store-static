@@ -11,7 +11,7 @@ const ProductContext = createContext();
 const ProductContextDispatcher = createContext();
 const AuthContext = createContext();
 const AuthContextDispatcher = createContext();
-let initialState = {
+const initialState = {
   products: [],
   totalPrice: 0,
 };
@@ -20,8 +20,10 @@ const StoreProvider = ({ children }) => {
   const [products, dispatch] = useReducer(storeReducer, initialState);
   const [auth, setAuth] = useState("");
   useEffect(() => {
-    initialState = JSON.parse(localStorage.getItem("products"));
-    dispatch({type:"update",value:initialState});
+    // initialState = JSON.parse(localStorage.getItem("products"));
+    const initial =
+      JSON.parse(localStorage.getItem("products")) || initialState;
+    dispatch({ type: "update", value: initial });
     setAuth(JSON.parse(localStorage.getItem("auth")));
   }, []);
 

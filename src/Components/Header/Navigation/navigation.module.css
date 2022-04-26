@@ -58,3 +58,11 @@ box-shadow: 0 0 15px 3px #ccc;
     border-radius: 5px;
     background-color: blueviolet;
 }
+@media screen and (max-width:400px) {
+    .container{
+        padding: 15px 10px;
+    }
+    .unactive_link,.active_link{
+        padding: 5px;
+    }
+}

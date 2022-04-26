@@ -25,7 +25,7 @@ const Product = ({ product, onAdd, inCart }) => {
         {inCart ? (
           <button
             className={`${styles.buyBtn}  ${
-              product.discount === 0 && styles.end_btn
+              product.discount === 0 ? styles.end_btn : ""
             }`}
             onClick={() => redirect()}
           >
@@ -34,7 +34,7 @@ const Product = ({ product, onAdd, inCart }) => {
         ) : (
           <button
             className={`${styles.buyBtn}  ${
-              product.discount === 0 && styles.end_btn
+              product.discount === 0 ? styles.end_btn : ""
             }`}
             onClick={onAdd}
           >

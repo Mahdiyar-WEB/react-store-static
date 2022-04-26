@@ -3,10 +3,10 @@ import styles from "./navigation.module.css";
 import { useProducts } from "../../../Providers/StoreProvider/StoreProvider";
 import { FaShoppingCart } from "react-icons/fa";
 import { useAuth } from "../../../Providers/StoreProvider/StoreProvider";
-import { BsFillPersonFill } from "react-icons/bs";
 
 const Navigation = () => {
-  const { products } = useProducts();
+  const { products } = useProducts() || "";
+
   const userData = useAuth();
   return (
     <nav className={styles.container}>

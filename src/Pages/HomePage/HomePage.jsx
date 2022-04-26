@@ -30,7 +30,7 @@ const HomePage = () => {
   return (
     <main className={styles.container}>
       <div className={loading ? styles.loading : styles.hideLoading}>
-        <img src={loading} alt="loading" />
+        <img src={"https://svgshare.com/i/gav.svg"} alt="loading" />
       </div>
       <section className={styles.cards_container}>
         {data.products.map((product) => {
