@@ -5,7 +5,7 @@ import { FaShoppingCart } from "react-icons/fa";
 import { useAuth } from "../../../Providers/StoreProvider/StoreProvider";
 
 const Navigation = () => {
-  const { products } = useProducts() || "";
+  const { products } = useProducts();
 
   const userData = useAuth();
   return (

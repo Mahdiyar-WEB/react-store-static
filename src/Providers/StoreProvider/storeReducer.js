@@ -14,15 +14,17 @@ const storeReducer = (state, action) => {
         });
       } else {
         const defindedProduct = cloneProducts[index];
-        defindedProduct.price +=
-          action.value.price / action.value.quantity ;
+        defindedProduct.price += action.value.price / action.value.quantity;
 
         defindedProduct.offPrice +=
           action.value.offPrice / action.value.quantity;
 
         defindedProduct.quantity += 1;
       }
-      localStorage.setItem("products",JSON.stringify({...state,products:cloneProducts}));
+      localStorage.setItem(
+        "products",
+        JSON.stringify({ ...state, products: cloneProducts })
+      );
       return { ...state, products: cloneProducts };
     }
     case "decreaseQuantity": {
@@ -34,14 +36,20 @@ const storeReducer = (state, action) => {
         const updatedProducts = cloneProducts.filter(
           (product) => product.id !== action.value.id
         );
-      localStorage.setItem("products",JSON.stringify({...state,products:updatedProducts}));
+        localStorage.setItem(
+          "products",
+          JSON.stringify({ ...state, products: updatedProducts })
+        );
         return { ...state, products: updatedProducts };
       } else {
         defindedProduct.price -= action.value.price / action.value.quantity;
         defindedProduct.offPrice -=
           action.value.offPrice / action.value.quantity;
         defindedProduct.quantity -= 1;
-      localStorage.setItem("products",JSON.stringify({...state,products:cloneProducts}));
+        localStorage.setItem(
+          "products",
+          JSON.stringify({ ...state, products: cloneProducts })
+        );
         return { ...state, products: cloneProducts };
       }
     }
@@ -49,13 +57,17 @@ const storeReducer = (state, action) => {
       const products = [...state.products];
       const allPrices = products.map((p) => p.offPrice);
       const total = _.sum(allPrices);
-      localStorage.setItem("products",JSON.stringify({...state,totalPrice:total}));
+      localStorage.setItem(
+        "products",
+        JSON.stringify({ ...state, totalPrice: total })
+      );
       return { ...state, totalPrice: total };
     }
-    case "update":{
+    case "update": {
       const value = action.value || "";
-      return {products:value.products,totalPrice:value.totalPrice}
+      return { products: value.products, totalPrice: value.totalPrice };
     }
+ 
     default:
       return state;
   }

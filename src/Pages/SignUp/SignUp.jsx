@@ -4,11 +4,11 @@ import Checkbox from "../../Common/Checkbox/Checkbox";
 import Input from "../../Common/Input/Input";
 import styles from "./signUp.module.css";
 import { Link } from "react-router-dom";
-import http from "../../services/httpServices";
 import { useToasts } from "react-toast-notifications";
 import { useNavigate,useLocation } from "react-router-dom";
 import queryString from 'query-string';
 import { useAuthAction } from "../../Providers/StoreProvider/StoreProvider";
+import signup from "../../Providers/signup";
 
 const initialValues = {
   name: "",
@@ -57,30 +57,19 @@ const SignUp = () => {
   const setAuth = useAuthAction();
   const navigate = useNavigate();
   const { addToast } = useToasts();
-  const { register } = http();
 
   const onSubmit = async (values) => {
-    const { name, email, password, phoneNumber } = values;
-    const userData = {
-      name,
-      email,
-      password,
-      phoneNumber,
-    };
-    await register(userData)
-      .then((res) => {
-        addToast("ثبت نام با موفقیت انجام شد", { appearance: "success" });
-        setAuth(res.data);
-        localStorage.setItem("auth", JSON.stringify(res.data));
-        navigate(isRedirect.redirect ? "/cart" : "/");
-      })
-      .catch((error) => {
-        if (error.response) {
-          addToast(error.response.data.message, { appearance: "error" });
-        } else {
-          addToast("خطا در برقراری ارتباط", { appearance: "error" });
+        const { name, email, password, phoneNumber } = values;
+        const data = signup(name,email,phoneNumber,password);
+        if(data.error){
+          addToast(data.info, { appearance: "error" });
         }
-      });
+        else{          
+          setAuth(data.info);
+          localStorage.setItem("auth", JSON.stringify(data.info));
+          addToast("ثبت نام با موفقیت انجام شد", { appearance: "success" });
+          navigate(isRedirect.redirect ? "/cart" : "/");
+        }
   };
   const formik = useFormik({
     initialValues: initialValues,

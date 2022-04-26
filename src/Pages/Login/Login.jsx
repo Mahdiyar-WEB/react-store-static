@@ -2,11 +2,11 @@ import Input from "../../Common/Input/Input";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import styles from "./login.module.css";
-import http from "../../services/httpServices";
 import { useToasts } from "react-toast-notifications";
 import { useNavigate, Link, useLocation } from "react-router-dom";
 import { useAuthAction } from "../../Providers/StoreProvider/StoreProvider";
 import queryString from "query-string";
+import login from '../../Providers/login';
 
 const initialValues = {
   email: "",
@@ -24,31 +24,20 @@ const validationSchema = Yup.object({
 const Login = () => {
   const location = useLocation();
   const isRedirect = queryString.parse(location.search);
-  console.log(isRedirect);
   const setAuth = useAuthAction();
   const navigate = useNavigate();
   const { addToast } = useToasts();
-  const { login } = http();
-  const onSubmit = (values) => {
-    console.log(values);
-    login(values)
-      .then((res) => {
-        setAuth(res.data);
-        localStorage.setItem("auth", JSON.stringify(res.data));
-        navigate(isRedirect.redirect ? "/cart" : "/");
-        addToast(`${res.data.name} خوش آمدید`, { appearance: "success" });
-      })
-      .catch((error) => {
-        if (error.response) {
-          addToast(error.response.data.message, {
-            appearance: "error",
-          });
-        } else {
-          addToast("خطا در برقراری ارتباط", {
-            appearance: "error",
-          });
-        }
-      });
+
+  const onSubmit =  (values) => {
+    const data = login(values.email,values.password);
+    if (data.error === true) {
+      addToast(data.info, { appearance: "error" });
+    } else {
+      setAuth(data.info);
+      localStorage.setItem("auth", JSON.stringify(data.info));
+      navigate(isRedirect.redirect ? "/cart" : "/");
+      addToast(`${data.info.name} خوش آمدید`, { appearance: "success" });
+    }
   };
   const formik = useFormik({
     initialValues: initialValues,
@@ -73,7 +62,7 @@ const Login = () => {
           </button>
         </div>
         <Link
-          to={isRedirect.redirect ?"/sign-up?redirect=cart":"/sign-up"}
+          to={isRedirect.redirect ? "/sign-up?redirect=cart" : "/sign-up"}
           style={{ marginTop: "1rem", display: "inline-block" }}
         >
           <p>حساب کاربری ندارید؟</p>
